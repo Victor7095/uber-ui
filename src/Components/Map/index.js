@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { View, Image } from "react-native";
+import { View, Image, StatusBar } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import Geocoder from "react-native-geocoding";
 
@@ -36,7 +36,7 @@ export default class Map extends Component {
       async ({ coords: { latitude, longitude } }) => {
         const response = await Geocoder.from({ latitude, longitude });
         const address = response.results[0].formatted_address;
-        const location = address.substring(0, address.indexOf(","));
+        const location = "Colônia Terra Nova";
 
         this.setState({
           region: {
@@ -79,6 +79,7 @@ export default class Map extends Component {
     const { region, destination, duration, location } = this.state;
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar barStyle="dark-content"/>
         <MapView
           style={{ flex: 1 }}
           region={region}
@@ -112,7 +113,7 @@ export default class Map extends Component {
                   <LocationText>{destination.title}</LocationText>
                 </LocationBox>
               </Marker>
-              <Marker coordinate={region} anchor={{ x: 0, y: 0 }}>
+              <Marker coordinate={region} anchor={{ x: 0, y: 200 }}>
                 <LocationBox>
                   <LocationTimeBox>
                     <LocationTimeText>{duration}</LocationTimeText>
