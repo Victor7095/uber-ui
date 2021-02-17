@@ -12,7 +12,7 @@ expo install
 
 ### Execução
 ```
-expo
+expo start
 ```
 
 ### Compilar para produção
